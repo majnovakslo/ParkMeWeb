@@ -104,7 +104,7 @@ CMD ["npm", "start"]
 
 ## 📞 Kontakt
 
-- **Email:** parkme@gmail.com
+- **Email:** parkme.slo@gmail.com
 - **Telefon:** 
   - Domen: 040 145 459
   - Maj: 068 641 803
