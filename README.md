@@ -12,7 +12,7 @@ ParkMe je slovensko startup podjetje v Ljubljanskem univerzitetnem inkubatorju, 
 - **Analitiko** - Podrobni vpogledi v izkoriščenost
 
 ## 🎯 Ciljna Publika
-
+ 
 Spletna stran je namenjena:
 - Potencialnim partnerjem (občine, trgovski centri, hoteli)
 - Investitorjem
