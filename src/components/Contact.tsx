@@ -163,7 +163,7 @@ const Contact = () => {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-parkme-green"
                     placeholder="Janez Novak"
                   />
-                </div>
+                </div> 
 
                 <div>
                   <label htmlFor="email" className="block font-semibold mb-2 text-parkme-dark">
