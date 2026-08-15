@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+    background-image: radial-gradient(circle at 15% -10%, rgba(2, 132, 199, 0.12), transparent 40%),
+      radial-gradient(circle at 90% 5%, rgba(16, 185, 129, 0.1), transparent 35%);
+  }
+
+  ::selection {
+    @apply bg-parkme-blue/20 text-slate-900;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-parkme-green px-6 py-3 font-semibold text-white shadow-lg shadow-parkme-green/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-green-600 hover:shadow-xl hover:shadow-parkme-green/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parkme-green/40;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-parkme-blue px-6 py-3 font-semibold text-white shadow-lg shadow-parkme-blue/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl hover:shadow-parkme-blue/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parkme-blue/40;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-parkme-green hover:text-parkme-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parkme-green/30;
+  }
+
+  .section-title {
+    @apply mb-4 text-center text-3xl font-bold tracking-tight text-slate-900 md:text-5xl;
+  }
+
+  .section-subtitle {
+    @apply mx-auto mb-12 max-w-3xl text-center text-lg leading-relaxed text-slate-600 md:text-xl;
+  }
+
+  .card {
+    @apply rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-sm shadow-slate-200/70 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-300/60;
+  }
+
+  .gradient-bg {
+    @apply bg-gradient-to-br from-slate-950 via-parkme-blue to-parkme-green;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-parkme-blue via-cyan-500 to-parkme-green bg-clip-text text-transparent;
+  }
+
+  .surface {
+    @apply rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
