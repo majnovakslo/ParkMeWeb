@@ -16,8 +16,36 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData)
+
+    // Use native form validation before building mailto
+    const form = e.currentTarget as HTMLFormElement
+    if (!form.checkValidity()) {
+      form.reportValidity()
+      return
+    }
+
+    const subject = `Povpraševanje ParkMe - ${formData.company || formData.name}`
+
+    const body = [
+      `Ime: ${formData.name}`,
+      `Email: ${formData.email}`,
+      `Podjetje: ${formData.company || '-'}`,
+      `Telefon: ${formData.phone || '-'}`,
+      `Število parkirnih mest: ${formData.parkingSpots || '-'}`,
+      '',
+      'Sporočilo:',
+      formData.message,
+    ].join('\n')
+
+    const mailtoUrl =
+      `mailto:parkme.slo@gmail.com` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`
+
+    // Open user's mail client with prefilled message
+    window.location.href = mailtoUrl
+
+    // show temporary submitted state (visual feedback)
     setSubmitted(true)
     setTimeout(() => setSubmitted(false), 5000)
   }
@@ -30,7 +58,7 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-parkme-gray to-white">
+    <section id="contact" className="py-20 bg-gradient-to-b from-slate-100 to-white">
       <div className="container-custom">
         <div className="text-center mb-16">
           <span className="inline-block bg-parkme-green/10 text-parkme-green px-4 py-2 rounded-full text-sm font-semibold mb-4">
@@ -56,8 +84,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="font-semibold mb-1">Email</div>
-                  <a href="mailto:parkme@gmail.com" className="text-parkme-blue hover:underline">
-                    parkme@gmail.com
+                  <a href="mailto:parkme.slo@gmail.com" className="text-parkme-blue hover:underline">
+                    parkme.slo@gmail.com
                   </a>
                 </div>
               </div>
@@ -71,12 +99,12 @@ const Contact = () => {
                   <div className="space-y-1">
                     <div>
                       <a href="tel:+386040145459" className="text-parkme-blue hover:underline">
-                        Domen: 040 145 459
+                        Maj: 068 641 803
                       </a>
                     </div>
                     <div>
                       <a href="tel:+386068641803" className="text-parkme-blue hover:underline">
-                        Maj: 068 641 803
+                        Domen: 040 145 459
                       </a>
                     </div>
                   </div>
@@ -98,7 +126,7 @@ const Contact = () => {
             </div>
 
             {/* Quick Stats */}
-            <div className="bg-gradient-to-br from-parkme-blue to-parkme-green rounded-xl p-6 text-white">
+            <div className="rounded-2xl bg-gradient-to-br from-parkme-blue to-parkme-green p-6 text-white shadow-lg shadow-parkme-blue/20">
               <h4 className="font-bold text-xl mb-4">Hitri Odzivni Čas</h4>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
@@ -118,7 +146,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-xl shadow-lg p-8">
+          <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/70">
             {!submitted ? (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
